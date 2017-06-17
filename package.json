@@ -7,6 +7,10 @@
     "build": "rimraf dist && babel src --out-dir dist",
     "dev": "babel src --watch --out-dir dist"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flintovich/react-media-resize.git"
+  },
   "keywords": [
     "react",
     "resize",
@@ -16,9 +20,9 @@
   "author": "Ruslan Sukhorukov <flintovich@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/flintovich/react-media-resize/issues"
   },
-  "homepage": "",
+  "homepage": "https://github.com/flintovich/react-media-resize",
   "dependencies": {
     "prop-types": "^15.5.7"
   },
@@ -30,5 +34,8 @@
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
     "rimraf": "^2.4.3"
+  },
+  "peerDependencies": {
+    "react": "^15.0.0"
   }
 }

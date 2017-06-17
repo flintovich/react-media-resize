@@ -25,23 +25,23 @@ import React from 'react';
 import MediaRange from 'react-media-resize';
 
 export default class App extends React.Component {
-    handlerEnterWidth() {
-        console.log('You entered in range 768..1024');
-    }
+  handlerEnterWidth() {
+  	console.log('You entered in range 768..1024');
+  }
     
-    handlerLeaveWidth() {
-        console.log('You left range 768..1024');
-    }
-    
-    render(
-        <MediaRange
-          range="768..1024"
-          onEnter={this.handlerEnterWidth}
-          onLeave={this.handlerLeaveWidth}
-         >
-           <AnotherComponent />
-        </MediaRange>
-    )
+  handlerLeaveWidth() {
+    console.log('You left range 768..1024');
+  }
+
+  render(
+	<MediaRange
+	  range="768..1024"
+	  onEnter={this.handlerEnterWidth}
+	  onLeave={this.handlerLeaveWidth}
+	>
+	  <AnotherComponent />
+	</MediaRange>
+  )
 }
 ```
 
@@ -51,42 +51,42 @@ import React from 'react';
 import MediaRange from 'react-media-resize';
 
 export default class App extends React.Component {
-    render() {
-        const rangesList = [
-            {
-                range: '..480',
-                onEnter: () => {
-                  console.log('Entered in mobile width');
-                }
-            },
-            {
-                range: '481..1024',
-                onEnter: () => {
-                  console.log('Entered in tablet width');
-                },
-                onLeave: () => {
-                  console.log('Left tablet width');
-                }
-            },
-            {
-                range: '1025..',
-                onEnter: () => {
-                  console.log('Entered in desctop screen width');
-                }
-            }
-        ];
+  render() {
+  	const rangesList = [
+      {
+        range: '..480',
+        onEnter: () => {
+          console.log('Entered in mobile width');
+        }
+      },
+      {
+        range: '481..1024',
+        onEnter: () => {
+          console.log('Entered in tablet width');
+        },
+        onLeave: () => {
+      	  console.log('Left tablet width');
+        }
+      },
+      {
+        range: '1025..',
+        onEnter: () => {
+          console.log('Entered in desctop screen width');
+        }
+      }
+    ];
     
-        return (
-            <MediaRange range={rangesList}>
-               <AnotherComponent />
-            </MediaRange>
-        )
-    }
+    return (
+      <MediaRange range={rangesList}>
+      	<AnotherComponent />
+      </MediaRange>
+    )
+  }
 }
 ```
 
 Also we can include to render or exclude component on window resize:
-```javascript
+```xml
 <MediaRange>
    <AnotherComponent range="..479" />
    <AnotherComponent range="480..1200" />
