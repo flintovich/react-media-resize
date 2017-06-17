@@ -19,6 +19,9 @@ It let us to use different components and change component state witch depends f
 - `onEnter` (*Function*): Callback for entering in particular browser width
 - `onLeave` (*Function*): Callback for leaving from particular browser width
 
+Important that callback functions will be called only one time after applying particular range.
+For example this can be useful if you want to call some actions on window resize. Like hide or show some section if browser screen less then 980px.
+
 ## Component Usage
 ```javascript
 import React from 'react';
@@ -45,7 +48,7 @@ export default class App extends React.Component {
 }
 ```
 
-You can also use several ranges for different window sizes with own callbacks:
+You can also to use several ranges for different window sizes with own callbacks:
 ```javascript
 import React from 'react';
 import MediaRange from 'react-media-resize';

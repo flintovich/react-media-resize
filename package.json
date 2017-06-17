@@ -1,6 +1,6 @@
 {
   "name": "react-media-resize",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Adaptive React components with a callback on entering or leaving in particular browser width on resize",
   "main": "dist/index.js",
   "scripts": {
