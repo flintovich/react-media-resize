@@ -1,0 +1,34 @@
+{
+  "name": "react-media-resize",
+  "version": "1.0.0",
+  "description": "Adaptive React components with a callback on entering or leaving in particular browser width on resize",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rimraf dist && babel src --out-dir dist",
+    "dev": "babel src --watch --out-dir dist"
+  },
+  "keywords": [
+    "react",
+    "resize",
+    "media-query",
+    "responsive"
+  ],
+  "author": "Ruslan Sukhorukov <flintovich@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "prop-types": "^15.5.7"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.1.4",
+    "babel-preset-es2015": "^6.1.4",
+    "babel-preset-react": "^6.1.4",
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2",
+    "rimraf": "^2.4.3"
+  }
+}
