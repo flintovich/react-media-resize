@@ -93,7 +93,7 @@ export default class App extends React.Component {
 					</MediaRange>
 				</div>
 				<span onClick={this.changeCodeVisibleState} style={styles.link}>
-					{`${codeVisible ? 'Hide' : 'Show'}`} code for this example
+					{`${codeVisible ? 'Hide' : 'Show'}`} code of this example
 				</span>
 				{codeVisible && <CodeExample />}
 			</div>
