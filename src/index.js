@@ -8,6 +8,7 @@ export default class MediaRange extends React.Component {
   constructor(props) {
     super(props);
     this.changeCurrentEnterRange = this.changeCurrentEnterRange.bind(this);
+    this.clearEnterRange = this.clearEnterRange.bind(this);
 
     this.state = {
       currentEnterRange: ''
@@ -35,12 +36,19 @@ export default class MediaRange extends React.Component {
     });
   }
 
+	clearEnterRange() {
+		this.setState({
+			currentEnterRange: ''
+		});
+	}
+
   setRangeHandlerForChildren() {
     React.Children.forEach(this.props.children, (item) => {
       if(item.props.range) {
         MediaRangeHelper.addRange({
           [item.props.range]: {
-            on: this.changeCurrentEnterRange
+            on: this.changeCurrentEnterRange,
+            off: this.clearEnterRange
           }
         });
       }
