@@ -1,10 +1,11 @@
 import React from 'react';
 
-import MediaRange from 'react-media-resize';
-
+import Header from './Header';
 import LittleScreen from './LittleScreen';
 import MediumScreen from './MediumScreen';
 import LargeScreen from './LargeScreen';
+
+import MediaRange from 'react-media-resize';
 
 export default class App extends React.Component {
 
@@ -56,11 +57,11 @@ export default class App extends React.Component {
 
 		return (
 			<div>
-				<h2>react-media-resize DEMO</h2>
-				Please, resize your screen
-				<h5>CallBacks Count: {this.state.callBackCount}</h5>
-				<span>{this.state.currentWindowSize}</span>
-				<div style={{border: '2px solid #ddd', padding: '20px'}}>
+				<Header
+					callBackCount={this.state.callBackCount}
+					currentWindowSize={this.state.currentWindowSize}
+				/>
+				<div style={{border: '2px solid #373277', padding: '20px'}}>
 					<MediaRange range={rangesList} >
 						<LittleScreen range="..480" />
 						<MediumScreen range="640..1024" />

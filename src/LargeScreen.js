@@ -9,7 +9,7 @@ export default class LargeScreen extends React.Component {
 		};
 
 		return (
-			<div style={styles}>This is a block for Large screen</div>
+			<div style={styles}>This is a block for Large screen "1200.."</div>
 		)
 	};
 }

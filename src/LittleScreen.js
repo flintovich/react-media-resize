@@ -9,7 +9,7 @@ export default class LittleScreen extends React.Component {
 		};
 
 		return (
-			<div style={styles}>This is a block for Little screen</div>
+			<div style={styles}>This is a block for Little screen "..480"</div>
 		)
 	};
 }

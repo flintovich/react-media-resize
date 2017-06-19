@@ -9,7 +9,7 @@ export default class MediumScreen extends React.Component {
 		};
 
 		return (
-			<div style={styles}>This is a block for Medium screen</div>
+			<div style={styles}>This is a block for Medium screen "640..1024"</div>
 		)
 	};
 }
