@@ -12,6 +12,7 @@ $ npm install --save react-media-resize
 ### `<MediaRange />`
 The component that present possibility to work with responsive design in ReactJS.
 It let us to use different components and change component state witch depends from browser screen width (on window resize).
+You can see [simple demo](https://flintovich.github.io/react-media-resize).
 
 #### Props
 
