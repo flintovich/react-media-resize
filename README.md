@@ -28,19 +28,19 @@ import React from 'react';
 import MediaRange from 'react-media-resize';
 
 export default class App extends React.Component {
-    handlerEnterWidth() {
+    handleEnterWidth() {
         console.log('You entered in range 768..1024');
     }
     
-    handlerLeaveWidth() {
+    handleLeaveWidth() {
         console.log('You left range 768..1024');
     }
     
     render(
         <MediaRange
           range="768..1024"
-          onEnter={this.handlerEnterWidth}
-          onLeave={this.handlerLeaveWidth}
+          onEnter={this.handleEnterWidth}
+          onLeave={this.handleLeaveWidth}
          >
            <AnotherComponent />
         </MediaRange>

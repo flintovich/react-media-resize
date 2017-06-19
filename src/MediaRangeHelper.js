@@ -5,17 +5,17 @@ var ResponsiveHelper = (function(){
     nativeMatchMedia = false;
 
   // detect match media support
-  if(window.matchMedia) {
-    if(window.Window && window.matchMedia === Window.prototype.matchMedia) {
+  if(global.matchMedia) {
+    if(global.Window && global.matchMedia === Window.prototype.matchMedia) {
       nativeMatchMedia = true;
-    } else if(window.matchMedia.toString().indexOf('native') > -1) {
+    } else if(global.matchMedia.toString().indexOf('native') > -1) {
       nativeMatchMedia = true;
     }
   }
 
   // prepare resize handler
   function resizeHandler() {
-    var winWidth = window.innerWidth;
+    var winWidth = global.innerWidth;
     if(winWidth !== prevWinWidth) {
       prevWinWidth = winWidth;
 
@@ -60,11 +60,11 @@ var ResponsiveHelper = (function(){
 
   // media query function
   function matchQuery(query, r1, r2) {
-    if(window.matchMedia && nativeMatchMedia) {
+    if(global.matchMedia && nativeMatchMedia) {
       return matchMedia(query).matches;
-    } else if(window.styleMedia) {
+    } else if(global.styleMedia) {
       return styleMedia.matchMedium(query);
-    } else if(window.media) {
+    } else if(global.media) {
       return media.matchMedium(query);
     } else {
       return prevWinWidth >= r1 && prevWinWidth <= r2;
