@@ -27,6 +27,7 @@ export default class App extends React.Component {
 						currentWindowSize: 'Enter in "..480"',
 						callBackCount: ++this.state.callBackCount
 					});
+					console.log('--->', 'Enter in "..480"');
 				}
 			},
 			{
@@ -36,12 +37,14 @@ export default class App extends React.Component {
 						currentWindowSize: 'Enter in "640..1024"',
 						callBackCount: ++this.state.callBackCount
 					});
+					console.log('--->', 'Enter in "640..1024"');
 				},
 				onLeave: () => {
 					this.setState({
-						currentWindowSize: 'Leave from  "640..1024"',
+						currentWindowSize: 'Leave from "640..1024"',
 						callBackCount: ++this.state.callBackCount
 					});
+					console.log('--->', 'Leave from "640..1024"');
 				}
 			},
 			{
@@ -51,6 +54,7 @@ export default class App extends React.Component {
 						currentWindowSize: 'Enter in "1200.."',
 						callBackCount: ++this.state.callBackCount
 					});
+					console.log('--->', 'Enter in "1200.."');
 				}
 			}
 		];

@@ -15,7 +15,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-highlight": "^0.10.0",
-    "react-media-resize": "^1.0.3"
+    "react-media-resize": "^1.0.5"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
