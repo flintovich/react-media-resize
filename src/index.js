@@ -37,7 +37,7 @@ export default class MediaRange extends React.Component {
   }
 
 	clearEnterRange() {
-		this.setState({
+    this.setState({
 			currentEnterRange: ''
 		});
 	}
@@ -47,8 +47,7 @@ export default class MediaRange extends React.Component {
       if(item.props.range) {
         MediaRangeHelper.addRange({
           [item.props.range]: {
-            on: this.changeCurrentEnterRange,
-            off: this.clearEnterRange
+            on: this.changeCurrentEnterRange
           }
         });
       }

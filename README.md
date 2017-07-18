@@ -94,8 +94,7 @@ Also we can include to render or exclude component on window resize:
 <MediaRange>
    <AnotherComponent range="..479" />
    <AnotherComponent range="480..1200" />
-   <AnotherComponent range="480..960" />
    <AlwaysVisibleComponent />
-   <AnotherComponent range="1200.." />
+   <AnotherComponent range="1201.." />
 </MediaRange>
 ```
