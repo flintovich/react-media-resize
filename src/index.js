@@ -59,7 +59,7 @@ export default class MediaRange extends React.Component {
     const { range, onEnter, onLeave } = this.props;
 
     // if range prop is array
-    if(range.forEach) {
+    if(range && range.forEach) {
       range.forEach((item) => {
         MediaRangeHelper.addRange({
           [item.range]: {
