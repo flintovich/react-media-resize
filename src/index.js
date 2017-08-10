@@ -1,5 +1,5 @@
 import React from 'react';
-import { oneOfType, string, array, func } from 'prop-types';
+import { oneOfType, string, array, func, bool } from 'prop-types';
 
 import MediaRangeHelper from './MediaRangeHelper';
 
@@ -28,6 +28,14 @@ export default class MediaRange extends React.Component {
     window.removeEventListener('orientationchange', MediaRangeHelper.resizeHandler);
 
     MediaRangeHelper.clearHandlers();
+  }
+
+  componentWillReceiveProps() {
+    if(!this.props.oneRender) {
+      MediaRangeHelper.clearHandlers();
+      this.setRangeHandlerForContainer();
+      this.setRangeHandlerForChildren();
+    }
   }
 
   changeCurrentEnterRange(range) {
@@ -97,5 +105,10 @@ export default class MediaRange extends React.Component {
 MediaRange.propTypes = {
   range: oneOfType([string, array]),
   onEnter: func,
-  onLeave: func
+  onLeave: func,
+  oneRender: bool,
+};
+
+MediaRange.defaultProps = {
+  oneRender: true,
 };
