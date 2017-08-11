@@ -1,4 +1,4 @@
-var ResponsiveHelper = (function(){
+var ResponsiveHelper = function(){
   // init variables
   var handlers = [],
     prevWinWidth,
@@ -87,31 +87,29 @@ var ResponsiveHelper = (function(){
   }
 
   // export public functions
-  return {
-    addRange: function(ranges) {
-      // parse data and add items to collection
-      var result = {data:{}};
+  this.addRange = function(ranges) {
+    // parse data and add items to collection
+    var result = {data:{}};
 
-      for(var key in ranges) {
-        var data = ranges[key];
+    for(var key in ranges) {
+      var data = ranges[key];
 
-        result.data[key] = {
-          range: parseRange(key),
-          rangeString: key,
-          enableCallback: data.on,
-          disableCallback: data.off
-        };
-      }
+      result.data[key] = {
+        range: parseRange(key),
+        rangeString: key,
+        enableCallback: data.on,
+        disableCallback: data.off
+      };
+    }
 
-      handlers.push(result);
+    handlers.push(result);
 
-      // call resizeHandler to recalculate all events
-      prevWinWidth = null;
-      resizeHandler();
-    },
-    resizeHandler: resizeHandler,
-    clearHandlers: clearHandlers
+    // call resizeHandler to recalculate all events
+    prevWinWidth = null;
+    resizeHandler();
   };
-}());
+  this.resizeHandler = resizeHandler;
+  this.clearHandlers = clearHandlers;
+};
 
 module.exports = ResponsiveHelper;

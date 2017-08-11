@@ -13,26 +13,28 @@ export default class MediaRange extends React.Component {
     this.state = {
       currentEnterRange: ''
     };
+
+    this.MediaRangeHelper = new MediaRangeHelper();
   }
 
   componentDidMount() {
     this.setRangeHandlerForChildren();
     this.setRangeHandlerForContainer();
 
-    window.addEventListener('resize', MediaRangeHelper.resizeHandler);
-    window.addEventListener('orientationchange', MediaRangeHelper.resizeHandler);
+    window.addEventListener('resize', this.MediaRangeHelper.resizeHandler);
+    window.addEventListener('orientationchange', this.MediaRangeHelper.resizeHandler);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', MediaRangeHelper.resizeHandler);
-    window.removeEventListener('orientationchange', MediaRangeHelper.resizeHandler);
+    window.removeEventListener('resize', this.MediaRangeHelper.resizeHandler);
+    window.removeEventListener('orientationchange', this.MediaRangeHelper.resizeHandler);
 
-    MediaRangeHelper.clearHandlers();
+    this.MediaRangeHelper.clearHandlers();
   }
 
   componentWillReceiveProps() {
     if(!this.props.oneRender) {
-      MediaRangeHelper.clearHandlers();
+      this.MediaRangeHelper.clearHandlers();
       this.setRangeHandlerForContainer();
       this.setRangeHandlerForChildren();
     }
@@ -53,9 +55,10 @@ export default class MediaRange extends React.Component {
   setRangeHandlerForChildren() {
     React.Children.forEach(this.props.children, (item) => {
       if(item.props.range) {
-        MediaRangeHelper.addRange({
+        this.MediaRangeHelper.addRange({
           [item.props.range]: {
-            on: this.changeCurrentEnterRange
+            on: this.changeCurrentEnterRange,
+            off: this.clearEnterRange
           }
         });
       }
@@ -68,7 +71,7 @@ export default class MediaRange extends React.Component {
     // if range prop is array
     if(range && range.forEach) {
       range.forEach((item) => {
-        MediaRangeHelper.addRange({
+        this.MediaRangeHelper.addRange({
           [item.range]: {
             on: item.onEnter,
             off: item.onLeave
@@ -77,7 +80,7 @@ export default class MediaRange extends React.Component {
       });
     } else {
       // else range prop should be a string
-      MediaRangeHelper.addRange({
+      this.MediaRangeHelper.addRange({
         [range]: {
           on: onEnter,
           off: onLeave

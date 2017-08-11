@@ -1,11 +1,12 @@
 {
   "name": "react-media-resize",
-  "version": "1.0.8",
+  "version": "2.0.0",
   "description": "Adaptive React components with a callback on entering or leaving in particular browser width on resize",
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf dist && babel src --out-dir dist",
-    "dev": "babel src --watch --out-dir dist"
+    "dev": "babel src --watch --out-dir dist",
+    "deploy": "npm publish"
   },
   "repository": {
     "type": "git",

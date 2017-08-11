@@ -91,10 +91,16 @@ export default class App extends React.Component {
 
 Also we can include to render or exclude component on window resize:
 ```xml
-<MediaRange>
-   <AnotherComponent range="..479" />
-   <AnotherComponent range="480..1200" />
-   <AlwaysVisibleComponent />
-   <AnotherComponent range="1201.." />
-</MediaRange>
+<div>
+    <MediaRange>
+        <AnotherComponent range="..479" />
+    </MediaRange>
+    <MediaRange>
+        <AnotherComponent range="480..1200" />
+    </MediaRange>
+    <AlwaysVisibleComponent />
+    <MediaRange>
+        <AnotherComponent range="1201.." />
+    </MediaRange>
+</div>
 ```
