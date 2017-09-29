@@ -60,12 +60,14 @@ var ResponsiveHelper = function(){
 
   // media query function
   function matchQuery(query, r1, r2) {
-    if(global.matchMedia && nativeMatchMedia) {
-      return matchMedia('all').matches;
+    if(global.matchMedia && nativeMatchMedia && query) {
+      return matchMedia(query).matches;
     } else if(global.styleMedia) {
       return styleMedia.matchMedium(query);
     } else if(global.media) {
       return media.matchMedium(query);
+    } else if(global.matchMedia && nativeMatchMedia && !query) {
+      return matchMedia('all').matches;
     } else {
       return prevWinWidth >= r1 && prevWinWidth <= r2;
     }
