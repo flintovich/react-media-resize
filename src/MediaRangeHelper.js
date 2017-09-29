@@ -61,7 +61,7 @@ var ResponsiveHelper = function(){
   // media query function
   function matchQuery(query, r1, r2) {
     if(global.matchMedia && nativeMatchMedia) {
-      return matchMedia(query).matches;
+      return matchMedia('all').matches;
     } else if(global.styleMedia) {
       return styleMedia.matchMedium(query);
     } else if(global.media) {
