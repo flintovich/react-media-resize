@@ -13,9 +13,18 @@ var ResponsiveHelper = function(){
     }
   }
 
+  // iOS incorrect detect innerWidth on Chrome
+  function detectWindowWidth() {
+    var iOS = /iPad|iPhone|iPod/.test(global.navigator.userAgent);
+    if (iOS && global.screen) {
+        return global.screen.width;
+    }
+    return global.innerWidth;
+  }
+
   // prepare resize handler
   function resizeHandler() {
-    var winWidth = global.innerWidth;
+    var winWidth = detectWindowWidth();
     if(winWidth !== prevWinWidth) {
       prevWinWidth = winWidth;
 
