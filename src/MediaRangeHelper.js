@@ -16,7 +16,7 @@ var ResponsiveHelper = function(){
   // iOS incorrect detect innerWidth on Chrome
   function detectWindowWidth() {
     var iOS = /iPad|iPhone|iPod/.test(global.navigator.userAgent);
-    if (iOS && global.document.documentElement) {
+    if (iOS && global.document && global.document.documentElement) {
         return global.document.documentElement.clientWidth;
     }
     return global.innerWidth;
