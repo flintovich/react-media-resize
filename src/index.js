@@ -1,77 +1,36 @@
-import React from 'react';
-import { oneOfType, string, array, func, bool } from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
-import MediaRangeHelper from './MediaRangeHelper';
+import MediaHelper from './MediaRangeHelper';
 
-export default class MediaRange extends React.Component {
+const MediaRangeHelper = new MediaHelper();
 
-  constructor(props) {
-    super(props);
-    this.changeCurrentEnterRange = this.changeCurrentEnterRange.bind(this);
-    this.clearEnterRange = this.clearEnterRange.bind(this);
+const MediaRange = ({ children, range, onEnter, onLeave }) => {
+  const [currentEnterRange, setCurrentEnterRange] = useState('');
 
-    this.state = {
-      currentEnterRange: ''
-    };
+  const changeCurrentEnterRange = (range) => {
+    setCurrentEnterRange(range);
+  };
+  const clearEnterRange = () => setCurrentEnterRange('');
 
-    this.MediaRangeHelper = new MediaRangeHelper();
-  }
-
-  componentDidMount() {
-    this.setRangeHandlerForChildren();
-    this.setRangeHandlerForContainer();
-
-    window.addEventListener('resize', this.MediaRangeHelper.resizeHandler);
-    window.addEventListener('orientationchange', this.MediaRangeHelper.resizeHandler);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.MediaRangeHelper.resizeHandler);
-    window.removeEventListener('orientationchange', this.MediaRangeHelper.resizeHandler);
-
-    this.MediaRangeHelper.clearHandlers();
-  }
-
-  componentWillReceiveProps() {
-    if(!this.props.oneRender) {
-      this.MediaRangeHelper.clearHandlers();
-      this.setRangeHandlerForContainer();
-      this.setRangeHandlerForChildren();
-    }
-  }
-
-  changeCurrentEnterRange(range) {
-    this.setState({
-      currentEnterRange: range
-    });
-  }
-
-	clearEnterRange() {
-    this.setState({
-			currentEnterRange: ''
-		});
-	}
-
-  setRangeHandlerForChildren() {
-    React.Children.forEach(this.props.children, (item) => {
-      if(item.props.range) {
-        this.MediaRangeHelper.addRange({
+  const setRangeHandlerForChildren = () => {
+    React.Children.forEach(children, (item) => {
+      if (item.props.range) {
+        MediaRangeHelper.addRange({
           [item.props.range]: {
-            on: this.changeCurrentEnterRange,
-            off: this.clearEnterRange
+            on: changeCurrentEnterRange,
+            off: clearEnterRange
           }
         });
       }
     });
   }
 
-  setRangeHandlerForContainer() {
-    const { range, onEnter, onLeave } = this.props;
-
+  const setRangeHandlerForContainer = () => {
     // if range prop is array
-    if(range && range.forEach) {
+    if(range && Array.isArray(range)) {
       range.forEach((item) => {
-        this.MediaRangeHelper.addRange({
+        MediaRangeHelper.addRange({
           [item.range]: {
             on: item.onEnter,
             off: item.onLeave
@@ -80,7 +39,9 @@ export default class MediaRange extends React.Component {
       });
     } else {
       // else range prop should be a string
-      this.MediaRangeHelper.addRange({
+      console.log('MediaRangeHelper.addRange', range);
+
+      MediaRangeHelper.addRange({
         [range]: {
           on: onEnter,
           off: onLeave
@@ -89,29 +50,35 @@ export default class MediaRange extends React.Component {
     }
   }
 
-  render() {
-    const { children } = this.props;
-    const { currentEnterRange } = this.state;
+  useEffect(() => {
+    setRangeHandlerForChildren();
+    setRangeHandlerForContainer();
+    window.addEventListener('resize', MediaRangeHelper.resizeHandler);
+    window.addEventListener('orientationchange', MediaRangeHelper.resizeHandler);
 
-    return (
-      <div className="media-range">
-        {React.Children.map(children, (item) => {
-          if(!item.props.range || currentEnterRange === item.props.range) {
-            return item;
-          }
-        })}
-      </div>
-    )
-  }
-}
+    return () => {
+      window.removeEventListener('resize', MediaRangeHelper.resizeHandler);
+      window.removeEventListener('orientationchange', MediaRangeHelper.resizeHandler);
+      MediaRangeHelper.clearHandlers();
+    }
+  }, []);
+
+  return React.Children.map(children, (item) => {
+    if (!item.props.range || currentEnterRange === item.props.range) {
+      return item;
+    }
+  });
+};
 
 MediaRange.propTypes = {
-  range: oneOfType([string, array]),
-  onEnter: func,
-  onLeave: func,
-  oneRender: bool,
+  range: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  onEnter: PropTypes.func,
+  onLeave: PropTypes.func,
+  oneRender: PropTypes.bool,
 };
 
 MediaRange.defaultProps = {
   oneRender: true,
 };
+
+export default MediaRange;

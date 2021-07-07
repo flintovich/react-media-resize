@@ -1,11 +1,14 @@
 {
   "name": "react-media-resize",
-  "version": "2.0.5",
+  "version": "3.0.0",
   "description": "Adaptive React components with a callback on entering or leaving in particular browser width on resize",
   "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "rimraf dist && babel src --out-dir dist",
-    "dev": "babel src --watch --out-dir dist",
+    "build": "rollup -c",
+    "dev": "rollup -c --watch",
     "deploy": "npm publish"
   },
   "repository": {
@@ -24,19 +27,24 @@
     "url": "https://github.com/flintovich/react-media-resize/issues"
   },
   "homepage": "https://github.com/flintovich/react-media-resize",
-  "dependencies": {
-    "prop-types": "^15.5.7"
+  "peerDependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1"
   },
   "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-cli": "^6.1.4",
-    "babel-preset-es2015": "^6.1.4",
-    "babel-preset-react": "^6.1.4",
-    "react": "^0.14.2",
-    "react-dom": "^0.14.2",
-    "rimraf": "^2.4.3"
-  },
-  "peerDependencies": {
-    "react": "^15.0.0"
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.14.5",
+    "@material-ui/core": "^4.8.3",
+    "@rollup/plugin-commonjs": "^15.1.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "babel-loader": "^8.1.0",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "rollup": "^1.32.1",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-babel-minify": "^10.0.0",
+    "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-peer-deps-external": "^2.2.3"
   }
 }
